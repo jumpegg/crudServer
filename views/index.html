@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="jquery-3.1.1.min.js"></script>
+</head>
+<body>
+	<button type="button" id="myBtn">click</button>
+
+	<form action="/insert" method="post" id="myForm">
+		<input type="text" name="title"> <br>
+		<input type="text" name="content"> <br>
+		<button type="submit">send</button>
+	</form>
+	<script>
+		$('#myBtn').click(function(){
+			$.ajax({
+				type: "GET",
+				url: '/getArr',
+				beforeSend: function(xhr){
+					xhr.setRequestHeader('Content-Type', 'application/json')
+				},
+				success: function(res){
+					console.log(res);
+				},
+				error: function(err){
+					console.log(err);
+				}
+			})
+		})
+	</script>
+</body>
+</html>
